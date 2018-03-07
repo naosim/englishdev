@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<title>EnglishDev</title>
+<script src="js/flashcarddata.js"></script>
+
+<header>
+  <h1>EnglishDev</h1>
+</header>
+<h2 id="title"></h2>
+<div id="jpn"></div>
+<button id="ansButton" onclick="showEng()">答え表示</button>
+<div id="eng"></div>
+<button id="nextButton" onclick="next()">次の問題</button>
+<script>
+function next() {
+  const flashcard = flashcarddata[Math.floor(Math.random() * flashcarddata.length)]
+  document.querySelector('#title').innerText = flashcard.title;
+  document.querySelector('#jpn').innerText = flashcard.jpn;
+  document.querySelector('#eng').innerText = flashcard.eng;
+  document.querySelector('#eng').style = "display:none"
+}
+function showEng() {
+  document.querySelector('#eng').style = ""
+}
+next();
+
+</script>
