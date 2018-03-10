@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-<title>EnglishDev</title>
-<script src="js/flashcarddata.js"></script>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnglishDev</title>
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="css/inline.css">
+  <style>
+  .main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  </style>
+  
+  <script src="js/flashcarddata.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1 class="header__title">EnglishDev</h1>
+    <button id="butRefresh" class="headerButton"></button>
+    <button id="butAdd" class="headerButton"></button>
+  </header>
 
-<header>
-  <h1>EnglishDev</h1>
-</header>
-<h2 id="title"></h2>
-<div id="jpn"></div>
-<button id="ansButton" onclick="showEng()">答え表示</button>
-<div id="eng"></div>
-<button id="nextButton" onclick="next()">次の問題</button>
+  <main class="main" hidden>
+    <h2 id="title"></h2>
+    <div id="jpn"></div>
+    <button id="ansButton" class="mdl-button mdl-button--colored" onclick="showEng()">答え表示</button>
+    <div id="eng"></div>
+    <button id="nextButton" class="mdl-button mdl-button--colored" onclick="next()">次の問題</button>
+  </main>
+
+  <div class="dialog-container">
+    <!-- Insert add-new-city-dialog.html here -->
+  </div>
+
+  <div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+
+  <!-- Insert link to app.js here -->
 <script>
 function next() {
   const flashcard = flashcarddata[Math.floor(Math.random() * flashcarddata.length)]
@@ -21,6 +55,13 @@ function next() {
 function showEng() {
   document.querySelector('#eng').style = ""
 }
+window.onload = () => {
+  document.querySelector('main').hidden = false;
+  document.querySelector('.loader').hidden = true;
+}
 next();
 
 </script>
+
+</body>
+</html>
